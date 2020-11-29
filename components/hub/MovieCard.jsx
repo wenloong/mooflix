@@ -1,10 +1,12 @@
+import Link from 'next/link';
+
 const MovieCard = (prop) => (
    <div>
       <div className="MovieCard">
          <div className="MovieCard__thumbnail">
-            <button>
+            <Link href={"../../movie/" + prop.id}>
                <img src="/beauty.jpg" />
-            </button>
+            </Link>
          </div>
          <div className="MovieCard__info">
             <div>

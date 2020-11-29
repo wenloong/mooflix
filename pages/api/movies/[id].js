@@ -15,7 +15,7 @@ export default async (req, res) => {
             const movie = await Movie.findById(id);
 
             if (!movie) {
-               return res.status(400).json({ success: true });
+               return res.status(400).json({ success: false });
             }
 
             res.status(200).json({ success: true, data: movie });

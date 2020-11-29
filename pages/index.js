@@ -1,14 +1,11 @@
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import { signIn, signOut, useSession } from "next-auth/client"
 
 import Navigation from '../components/navigation/Navigation';
 import Featured from '../components/hub/Featured';
 import Collection from '../components/hub/Collection';
-
-
-import SignUp from './signup';
 
 // getMovie = async (mvid) => {
 //    let host = "http://192.168.1.4:";
@@ -18,29 +15,41 @@ import SignUp from './signup';
 //    let suffix = "?op=OPEN&namenoderpcaddress=localhost:9000&offset=0";
 
 //    let full_url = host + port + path + dir_path + mvid + suffix;
-
-   
 // }
 
 const Index = (props) => {
+   const [session, loading] = useSession();
    const router = useRouter();
 
    return (
    <div>
+      {!session ? 
+      (
+         <>
+         <button onClick={signIn}>Sign In</button>
+         </>
+      ): 
+      (
+         <>
+         <div>{session.user.name}</div>
+         <button onClick={signOut}>Sign Out</button>
+         <Collection movies={props.movies} user={session.user.name}/>
+         </>
+      )}
+      
       <Navigation/>
       <div className="Hub">
          <Featured/>
-         {/* <Collection movies={props.movies}/> */}
          {/* <video controls>
             {console.log(hdfs)}
             <source src="http://192.168.1.4:9864/webhdfs/v1/movies/Doctor_Strange.mp4?op=OPEN&namenoderpcaddress=localhost:9000&offset=0" type="video/mp4"></source>
          </video> */}
-         <Link href="/movie/Doctor_Strange">
+         {/* <Link href="/movie/Doctor_Strange">
             <p>Doctor Strange</p>
-         </Link>
+         </Link> */}
 
 
-         <button onClick={() => {
+         {/* <button onClick={() => {
             var formData = new FormData();
             var filePath = 'C:/Users/wenlo/Documents/Development/Web\ Development/mooflix/public/movies/Avengers.mp4';
             console.log(filePath);
@@ -54,7 +63,7 @@ const Index = (props) => {
                console.error(error);
             })
          }}>
-         </button>
+         </button> */}
       </div>
    </div>
    );

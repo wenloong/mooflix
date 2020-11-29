@@ -9,7 +9,7 @@ const Collection = (props) => (
          <ul className="Slider__list">
             {props.movies.map((movie) => (
                <li key={movie._id} className="Slider__list--item">
-                  <MovieCard title={movie.title}/>
+                  <MovieCard id={movie._id} title={movie.title}/>
                </li>
             ))}
          </ul>
