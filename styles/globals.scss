@@ -97,6 +97,14 @@ ul li {
          margin-right: 20px;
       }
    }
+
+   &__button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      display: inline-block;
+      vertical-align: middle;
+   }
 }
 
 /* ===FEATURED=== */
@@ -135,19 +143,51 @@ ul li {
 
 /* ===SLIDER=== */
 .Slider {
-   --list-items: 6;
+   --list-items: 5;
    --list-items-margin: 0px;
+   box-sizing: border-box;
 
    &__list {
       display: flex;
+      margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      width: calc(100% / var(--list-items) - var(--list-items-margin));
+   
+      &--item {
+         display: inline-block;
+         width: calc(100%/ var(--list-items) - var(--list-items-margin));
+         margin-left: calc(var(--list-items-margin) / 2);
+         margin-right: calc(var(--list-items-margin) / 2);
+
+         &:not(:last-child) {
+            margin-right: 5px;
+         }
+
+      }
+   }
+}
+
+/* ===ALLMOVIES === */
+.Movies {
+   box-sizing: border-box;
+
+   &__list {
+      width: 350px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+
+      &--item {
+         display: inline-block;
+         margin: 0;
+         margin-bottom: 20px;
+      }
    }
 }
 
 /* ===MOVIECARD=== */
-.MovieCard {
+.MovieCard {  
 
    &__thumbnail {
       padding: 0;
@@ -158,11 +198,40 @@ ul li {
          padding: 0;
          border: 0;
          cursor: pointer;
-         
+      }
+
+      img {
+         width: 100%;
+         height: 200px;
+         cursor: pointer;
+         border-radius: 5px;
+      }
+   }
+
+   &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+
+      div {
+         font-size: 13px;
+         display: flex;
+         text-overflow: nowrap;
+
          img {
-            display: block;
-            border-radius: 5px;
+            width: 20px;
+            margin-left: 5px;
+            margin-top: 0;
          }
+
+         p {
+            margin: 0;
+         }
+      }
+
+      :nth-child(2) {
+         margin-left: 5px;
       }
    }
 }
@@ -187,5 +256,234 @@ ul li {
       background-color: transparent;
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
+   }
+}
+
+/* ===COMMENT FORM=== */
+.Form {
+   &__comment {
+      form {
+         label {
+            display: block;
+         }
+
+         textarea {
+            display: inline-block;
+            vertical-align: middle;
+            border: none;
+            padding: 10px 5px;
+            width: 500px;
+            background: none;
+            border-bottom: 1px solid #FFFFFF;
+            color: #FFFFFF;
+         }
+
+         button {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 10px 15px;
+            border: none;
+            margin-left: 10px;
+            background: #6F49DD;
+            color: #FFFFFF;
+         }
+
+      }
+   }
+
+   &__newmovie {
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      padding: 20px 50px;
+
+      div {
+         display: flex;
+         justify-content: space-between;
+
+         input, textarea {
+            border: none;
+            width: 200px;
+            padding: 5px 10px;
+            margin-top: 10px;
+         }
+
+         .checkbox {
+            width: 10px;
+
+            &__label {
+               font-size: 14px;
+            }
+         }
+      }
+
+      button {
+         display: inline-block;
+         vertical-align: middle;
+         padding: 10px 15px;
+         border: none;
+         margin-top: 20px;
+         background: #6F49DD;
+         color: #FFFFFF;
+         cursor: pointer;
+      }
+   }
+}
+
+.Showtime {
+
+   &__genre {
+      h3 {
+         font-weight: 400;
+         font-size: 15px;
+         margin: 0;
+         padding: 0;
+      }
+
+      &--item {
+         display: inline-block;
+         margin-right: 10px;
+
+         p {
+            margin: 0;
+            font-size: 14px;
+         }
+      }
+   }
+
+   &__stats {   
+      &--like, &--dislike {
+         display: inline-block;
+      
+         img, p {
+            display: inline-block;
+         }
+
+         img {
+            cursor: pointer;
+         }
+         
+         p {
+            margin-left: 10px;
+         }
+      }
+
+      &--dislike {
+         margin-left: 20px;
+      }
+   }
+
+   &__delete {
+      button {
+         padding: 10px 15px;
+         background-color: #6F49DD;
+         color: #FFF;
+         border: none;
+         border-radius: 5px;
+         margin-bottom: 10px;
+         cursor: pointer;
+      }
+   }
+}
+
+.Comment {
+   border-top: 1px solid #333333;
+   margin-top: 50px;
+
+   &__title {
+      font-size: 15px;
+   }
+
+   &__comments {
+
+      div {
+         .Comments__wrapper {
+            margin-bottom: 20px;
+            img, div {
+               display: inline-block;
+               vertical-align: middle;
+            }
+
+            img {
+               width: 50px;
+               border-radius: 100%;
+               margin-right: 20px;
+            }
+
+            div {
+               p {
+                  margin: 0;
+            
+                  &:first-child {
+                     color: #999999; 
+                     font-size: 16px;
+                  }
+
+                  font-size: 14px;
+               }
+
+            
+            }
+         }
+      }
+   }
+}
+
+/* ===VIDEO=== */
+video {
+   width: 100%;
+   margin-top: 30px;
+   border-radius: 5px;
+}
+
+/* ===COLLECTION=== */
+.Collection {
+   margin-top: -25px;
+   margin-bottom: 50px;
+   &__search {
+      margin-top: 25px;
+      margin-bottom: 25px;
+
+      input {
+         width: 70%;
+         padding: 20px 30px;
+         background: #161616;
+         border: none;
+         border-bottom: 1px solid #333333;
+         color: #999999;
+         font-weight: 600;
+         border-radius: 5px;
+         font-size: 18px;
+      }
+
+      input:focus {
+         outline: none;
+         border-bottom: 1px solid #6F49DD;
+      }
+
+      button {
+         padding: 20px 30px;
+         border-radius: 5px;
+         border: none;
+         margin-left: 20px;
+         background-color: #6F49DD;
+         color: #FFF;
+      }
+   }
+}
+
+.Settings {
+   position: absolute;
+   background-color: #2b2b2b;
+   border-radius: 5px;
+
+   ul {
+      padding: 20px 20px;
+      margin: 0;
+
+      li {
+         font-size: 15px;
+         cursor: pointer;
+      }
    }
 }

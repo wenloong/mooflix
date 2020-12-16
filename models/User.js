@@ -16,7 +16,11 @@ const UserSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         required: true,
-    }
+    },
+    pref: [{
+        type: String,
+        required: true
+     }]
 })
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema);

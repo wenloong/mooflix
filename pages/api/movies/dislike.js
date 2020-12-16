@@ -8,7 +8,7 @@ export default async (req, res) => {
       if (movieData.likes.includes(uid)) {
          const movie = await Movie.updateOne(
             {
-               _id: mvid,
+               _id: mvid},{
                $inc: { likeCount: -1, dislikeCount: 1 },
                $pull: { likes: uid },
                $push: { dislikes: uid }
@@ -19,7 +19,7 @@ export default async (req, res) => {
       } else if (movieData.dislikes.includes(uid)) {
          const movie = await Movie.update(
             {
-               _id: mvid,
+               _id: mvid},{
                $inc: { dislikeCount: -1 },
                $pull: { dislikes: uid }
             }
@@ -29,7 +29,7 @@ export default async (req, res) => {
       } else {
          const movie = await Movie.update(
             {
-               _id: mvid,
+               _id: mvid},{
                $inc: { dislikeCount: 1 },
                $push: { dislikes: uid }
             }

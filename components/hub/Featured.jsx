@@ -1,7 +1,7 @@
 const Featured = () => (
    <div className="Featured">
       <div className="Featured__image">
-         <img src="/endgame.jpg"/>
+         <img src="thumbnail/avengers.jpg"/>
       </div>
       <div className="Featured__overlay">
          <div className="Featured__overlay--image">
